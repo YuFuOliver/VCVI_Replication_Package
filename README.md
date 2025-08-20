@@ -98,4 +98,4 @@ Contains GPU-optimized versions of selected algorithms from VCVI package, plus a
 ## Citation
 
 If you use this package in your research, please cite our paper:  
-> [Vector Copula Variational Inference and Dependent Block Posterior Approximations"](https://arxiv.org/abs/2503.01072)
+> [Vector Copula Variational Inference and Dependent Block Posterior Approximations](https://arxiv.org/abs/2503.01072)
