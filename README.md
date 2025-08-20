@@ -14,7 +14,7 @@ The purpose of this repository are:
 
 > **More replication files will be available soon, which will use these packages.**
 > 
-> **This repository is under development.**
+> **This repository is under testing.**
 
 ---
 
