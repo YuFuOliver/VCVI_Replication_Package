@@ -1,16 +1,22 @@
 # VCVI Replication Package
 
-This repository contains Python packages to replicate the results in the paper "Vector Copula Variational Inference and Dependent Block Posterior Approximations" by Yu Fu, Michael Stanley Smith, and Anastasios Panagiotelis. There are two packages:
-- **VCVI**: All VI algorithms used in the paper, implemented in CPU.
-- **VCVI_GPU**: Selected VI algorithms from VCVI, implemented in GPU.
+This repository contains Python packages to replicate the results in the paper **"Vector Copula Variational Inference and Dependent Block Posterior Approximations"** by Yu Fu, Michael Stanley Smith, and Anastasios Panagiotelis. 
+
+There are two packages:
+- **VCVI**: All VI algorithms used in the paper, implemented in CPU
+- **VCVI_GPU**: Selected VI algorithms from VCVI, implemented in GPU
+
+## Purpose
 
 The purpose of this repository are:
-1. To provide two Python packages replicating the results in the paper, such that the dependencies can be installed automatically.
-2. To provide instructions on how to replicate the paper.
+1. To provide two Python packages replicating the results in the paper, such that the dependencies can be installed automatically
+2. To provide instructions on how to replicate the paper
 
-**More replication files will be available soon, which will use these packages.**
+> **More replication files will be available soon, which will use these packages.**
+> 
+> **This repository is under development.**
 
-This repository is under development.
+---
 
 ## Installation
 
@@ -26,41 +32,7 @@ pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdi
 pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI_GPU
 ```
 
-<!-- ## Requirements
-
-Both packages automatically install their dependencies:
-
-- Python >= 3.8
-- torch (>= 2.4.0 for CPU, >= 2.5.1 for GPU)
-- numpy >= 1.26.4
-- scipy >= 1.13.1
-- bridgestan
-- pandas
-- matplotlib
-- seaborn
-- scikit-learn
-- cmdstanpy
-
-**GPU version additionally requires:**
-- CUDA-compatible GPU
-- CUDA drivers
-- PyTorch with CUDA support -->
-
-
-<!-- ```
-VCVI_Replication_Package/
-├── VCVI/                 # CPU implementation
-│   ├── setup.py
-│   ├── __init__.py
-│   ├── SVUC/            # SVUC-specific methods
-│   ├── spline/          # Spline additive functions
-│   └── ...
-├── VCVI_GPU/            # GPU implementation
-│   ├── setup.py
-│   ├── __init__.py
-│   └── ...
-└── README.md
-``` -->
+---
 
 ## Available Methods
 
@@ -76,13 +48,13 @@ VCVI_Replication_Package/
 **GVC_orthod_withCM**: A5 & A6 (Section 4.1 & Section 4.2)  
 **KVC_GVC_orthod**: A7 (Online Appendix)  
 
-**SVUC subpackage:**
+**SVUC Subpackage:**
 - **Blocked_SVUC**: BLK-C (Section 4.3)
 - **GVC_factor_SVUC**: GVC-F20 (Section 4.3)
 - **GVC_orthod_SVUC**: GVC-I (Section 4.3)
 - **KVC_SVUC**: KVC-G (Section 4.3)
 
-**spline subpackage:**
+**Spline Subpackage:**
 - **Blocked_spline**: BLK-C (Section 4.4)
 - **GVC_factor_spline**: GVC-F5 & GVC-F20 (Section 4.4)
 - **KVC_spline**: KVC-G (Section 4.4)
@@ -91,16 +63,14 @@ VCVI_Replication_Package/
 
 Contains GPU-optimized versions of selected algorithms from VCVI package, plus additional GPU-specific log-posterior computations.
 
+**Main Algorithms:**
+ - **MFVI**  
+ - **FCVI**  
+ - **Blocked_factor**  
+ - **GVC_factor**  
+ - **GVC_orthod**  
+ - **GVC_orthod_withCM**  
+ - **KVC_GVC_orthod**  
 
 
-<!-- ## License
-
-[Your License Here] -->
-
-<!-- ## Citation
-
-If you use this package, please cite:
-
-```
-[Your Citation Here]
-```  -->
+> **Note:** **VCVI_GPU** does not include analytical gradient methods (`MFVI_anagrad`, `GVC_orthod_anagrad`) or SVUC/spline subpackages as in **VCVI**.
