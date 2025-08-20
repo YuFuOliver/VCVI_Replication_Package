@@ -3,8 +3,8 @@
 This repository contains Python packages to replicate the results in the paper **"Vector Copula Variational Inference and Dependent Block Posterior Approximations"** by Yu Fu, Michael Stanley Smith, and Anastasios Panagiotelis. 
 
 There are two packages:
-- **VCVI**: All VI algorithms used in the paper, implemented in CPU
-- **VCVI_GPU**: Selected VI algorithms from VCVI, implemented in GPU
+- **VCVI**: All VI algorithms used in the paper, implemented on CPU
+- **VCVI_GPU**: Selected VI algorithms from VCVI, implemented on GPU
 
 ## Purpose
 
@@ -30,6 +30,24 @@ pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdi
 
 ```bash
 pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI_GPU
+```
+
+---
+
+## Usage
+The packages are highly user-friendly, although how to use the package is not the main purpose of this repository.
+
+The packages support user-defined posterior distributions or any model written in **Stan**.
+
+Training is as simple as:
+```python
+# mean field variational inference
+from VCVI import MFVI
+
+mf = MFVI(optimizer='Adam', sampling=False,
+          stan_model=None, log_post=log_post)
+          
+ELBO_mf = mf.train(num_iter=40000)
 ```
 
 ---
