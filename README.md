@@ -3,8 +3,8 @@
 This repository contains Python packages to replicate the results in the paper **"Vector Copula Variational Inference and Dependent Block Posterior Approximations"** by Yu Fu, Michael Stanley Smith, and Anastasios Panagiotelis. ([arxiv link](https://arxiv.org/abs/2503.01072))
 
 There are two packages implementing VI algorithms based on **PyTorch**:
-- **VCVI**: All VI algorithms used in the paper, implemented on CPU
-- **VCVI_GPU**: Selected VI algorithms from VCVI, implemented on GPU
+- `VCVI`: All VI algorithms used in the paper, implemented on CPU
+- `VCVI_GPU`: Selected VI algorithms from VCVI, implemented on GPU
 
 ## Purpose
 
@@ -20,13 +20,13 @@ The purpose of this repository are:
 
 ## Installation
 
-### VCVI
+### `VCVI`
 
 ```bash
 pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI
 ```
 
-### VCVI_GPU
+### `VCVI_GPU`
 
 ```bash
 pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI_GPU
@@ -54,44 +54,44 @@ ELBO_mf = mf.train(num_iter=40000)
 
 ## Available Methods
 
-### VCVI Package (CPU)
+### `VCVI` Package (CPU)
 
-**MFVI**: GMF (Gaussian Mean Field)  
-**MFVI_anagrad**: GMF with analytical gradients  
-**FCVI**: G-Fp & GC-Fp  
-**Blocked_factor**: BLK & BLK-C (Section 4.1 & Section 4.2)  
-**GVC_factor**: A1 & A2 (Section 4.1 & Section 4.2)  
-**GVC_orthod**: A3 & A4 (Section 4.1 & Section 4.2)  
-**GVC_orthod_anagrad**: GVC_orthod with analytical gradients  
-**GVC_orthod_withCM**: A5 & A6 (Section 4.1 & Section 4.2)  
-**KVC_GVC_orthod**: A7 (Online Appendix)  
+`MFVI`: GMF (Gaussian Mean Field)  
+`MFVI_anagrad`: GMF with analytical gradients  
+`FCVI`: G-Fp & GC-Fp  
+`Blocked_factor`: BLK & BLK-C (Section 4.1 & Section 4.2)  
+`GVC_factor`: A1 & A2 (Section 4.1 & Section 4.2)  
+`GVC_orthod`: A3 & A4 (Section 4.1 & Section 4.2)  
+`GVC_orthod_anagrad`: GVC_orthod with analytical gradients  
+`GVC_orthod_withCM`: A5 & A6 (Section 4.1 & Section 4.2)  
+`KVC_GVC_orthod`: A7 (Online Appendix)  
 
-**SVUC Subpackage:**
-- **Blocked_SVUC**: BLK-C (Section 4.3)
-- **GVC_factor_SVUC**: GVC-F20 (Section 4.3)
-- **GVC_orthod_SVUC**: GVC-I (Section 4.3)
-- **KVC_SVUC**: KVC-G (Section 4.3)
+`SVUC` Subpackage:
+- `Blocked_SVUC`: BLK-C (Section 4.3)
+- `GVC_factor_SVUC`: GVC-F20 (Section 4.3)
+- `GVC_orthod_SVUC`: GVC-I (Section 4.3)
+- `KVC_SVUC`: KVC-G (Section 4.3)
 
-**Spline Subpackage:**
-- **Blocked_spline**: BLK-C (Section 4.4)
-- **GVC_factor_spline**: GVC-F5 & GVC-F20 (Section 4.4)
-- **KVC_spline**: KVC-G (Section 4.4)
+`Spline Subpackage:`
+- `Blocked_spline`: BLK-C (Section 4.4)
+- `GVC_factor_spline`: GVC-F5 & GVC-F20 (Section 4.4)
+- `KVC_spline`: KVC-G (Section 4.4)
 
-### VCVI_GPU Package (GPU)
+### `VCVI_GPU` Package (GPU)
 
-Contains GPU-optimized versions of selected algorithms from VCVI package, plus additional GPU-specific log-posterior computations.
+Contains GPU-optimized versions of selected algorithms from `VCVI`, plus additional GPU-specific log-posterior computations.
 
 **Main Algorithms:**
- - **MFVI**  
- - **FCVI**  
- - **Blocked_factor**  
- - **GVC_factor**  
- - **GVC_orthod**  
- - **GVC_orthod_withCM**  
- - **KVC_GVC_orthod**  
+ - `MFVI`  
+ - `FCVI`  
+ - `Blocked_factor`  
+ - `GVC_factor`  
+ - `GVC_orthod`  
+ - `GVC_orthod_withCM`  
+ - `KVC_GVC_orthod`  
 
 
-> **Note:** **VCVI_GPU** does not include analytical gradient methods (`MFVI_anagrad`, `GVC_orthod_anagrad`) or SVUC/spline subpackages as in **VCVI**.
+> **Note:** `VCVI_GPU` does not include analytical gradient methods (`MFVI_anagrad`, `GVC_orthod_anagrad`) or SVUC/spline subpackages as in `VCVI`.
 
 ---
 
