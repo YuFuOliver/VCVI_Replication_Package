@@ -35,7 +35,7 @@ pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdi
 ---
 
 ## Usage
-The packages are highly user-friendly, although how to use the package is not the main purpose of this repository.
+The packages are highly user-friendly. However, the purpose of this repository is to introduce how to replicate the paper but not to explain how to use the packages.
 
 The packages support user-defined posterior distributions or any model written in **Stan**.
 
