@@ -56,44 +56,45 @@ ELBO_mf = mf.train(num_iter=40000)
 
 ### `VCVI` Package (CPU)
 
-`MFVI`: GMF (Gaussian Mean Field)  
-`MFVI_anagrad`: GMF with analytical gradients  
-`FCVI`: G-Fp & GC-Fp  
-`Blocked_factor`: BLK & BLK-C (Section 4.1 & Section 4.2)  
-`GVC_factor`: A1 & A2 (Section 4.1 & Section 4.2)  
-`GVC_orthod`: A3 & A4 (Section 4.1 & Section 4.2)  
-`GVC_orthod_anagrad`: GVC_orthod with analytical gradients  
-`GVC_orthod_withCM`: A5 & A6 (Section 4.1 & Section 4.2)  
-`KVC_GVC_orthod`: A7 (Online Appendix)  
+**Main Algorithms:**
+- [MFVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/MFVI.py): GMF (Gaussian Mean Field)
+- [MFVI_anagrad](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/MFVI_anagrad.py): GMF with analytical gradients
+- [FCVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/FCVI.py): G-Fp & GC-Fp
+- [Blocked_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/Blocked_factor.py): BLK & BLK-C (Section 4.1 & Section 4.2)
+- [GVC_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GVC_factor.py): A1 & A2 (Section 4.1 & Section 4.2)
+- [GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GVC_orthod.py): A3 & A4 (Section 4.1 & Section 4.2)
+- [GVC_orthod_anagrad](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GVC_orthod_anagrad.py): `GVC_orthod` with analytical gradients
+- [GVC_orthod_withCM](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GVC_orthod_withCM.py): A5 & A6 (Section 4.1 & Section 4.2)
+- [KVC_GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/KVC_GVC_orthod.py): A7 (Online Appendix)
 
-`SVUC` Subpackage:
-- `Blocked_SVUC`: BLK-C (Section 4.3)
-- `GVC_factor_SVUC`: GVC-F20 (Section 4.3)
-- `GVC_orthod_SVUC`: GVC-I (Section 4.3)
-- `KVC_SVUC`: KVC-G (Section 4.3)
+**`SVUC` Subpackage:**
+- [Blocked_SVUC](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/SVUC/Blocked_SVUC.py): BLK-C (Section 4.3)
+- [GVC_factor_SVUC](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/SVUC/GVC_factor_SVUC.py): GVC-F20 (Section 4.3)
+- [GVC_orthod_SVUC](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/SVUC/GVC_orthod_SVUC.py): GVC-I (Section 4.3)
 
-`Spline Subpackage:`
-- `Blocked_spline`: BLK-C (Section 4.4)
-- `GVC_factor_spline`: GVC-F5 & GVC-F20 (Section 4.4)
-- `KVC_spline`: KVC-G (Section 4.4)
+
+**`spline` Subpackage:**
+- [Blocked_spline](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/spline/Blocked_spline.py): BLK-C (Section 4.4)
+- [GVC_factor_spline](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/spline/GVC_factor_spline.py): GVC-F5 & GVC-F20 (Section 4.4)
+- [KVC_spline](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/spline/KVC_spline.py): KVC-G (Section 4.4)
 
 ### `VCVI_GPU` Package (GPU)
 
 Contains GPU-optimized versions of selected algorithms from `VCVI`, plus additional GPU-specific log-posterior computations.
 
-**Main Algorithms:**
- - `MFVI`  
- - `FCVI`  
- - `Blocked_factor`  
- - `GVC_factor`  
- - `GVC_orthod`  
- - `GVC_orthod_withCM`  
- - `KVC_GVC_orthod`  
+**Available Algorithms (same as described in `VCVI`, but on GPU):**
+- [MFVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/MFVI.py)
+- [FCVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/FCVI.py)
+- [Blocked_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/Blocked_factor.py)
+- [GVC_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/GVC_factor.py)
+- [GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/GVC_orthod.py)
+- [GVC_orthod_withCM](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/GVC_orthod_withCM.py)
+- [KVC_GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/KVC_GVC_orthod.py)
 
-
-> **Note:** `VCVI_GPU` does not include analytical gradient methods (`MFVI_anagrad`, `GVC_orthod_anagrad`) or SVUC/spline subpackages as in `VCVI`.
+> **Note:** `VCVI_GPU` does not include analytical gradient methods (`MFVI_anagrad`, `GVC_orthod_anagrad`) or `SVUC`/`spline` subpackages as in `VCVI`.
 
 ---
+
 
 ## Citation
 
