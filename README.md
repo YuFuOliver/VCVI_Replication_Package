@@ -9,7 +9,7 @@ There are two packages implementing VI algorithms based on **PyTorch**:
 ## Purpose
 
 The purpose of this repository are:
-1. To provide two Python packages replicating the results in the paper, such that the dependencies can be installed automatically
+1. To provide two Python packages to replicate the results in the paper, such that the dependencies can be installed automatically
 2. To provide instructions on how to replicate the paper
 
 > **More replication files will be available soon, which will use these packages.**
