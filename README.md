@@ -1,6 +1,6 @@
 # VCVI Replication Package
 
-This repository contains Python packages to replicate the results in the paper **"Vector Copula Variational Inference and Dependent Block Posterior Approximations"** by Yu Fu, Michael Stanley Smith, and Anastasios Panagiotelis. ([arxiv link](https://arxiv.org/abs/2503.01072))
+This repository contains Python packages to replicate the results in the paper **"Vector Copula Variational Inference and Dependent Block Posterior Approximations"** by Yu Fu, Michael Stanley Smith, and Anastasios Panagiotelis ([arxiv link](https://arxiv.org/abs/2503.01072)). The packages are developed and maintained by Yu Fu.
 
 There are two packages implementing VI algorithms based on **PyTorch**:
 - `VCVI`: All VI algorithms used in the paper, implemented on CPU
