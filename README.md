@@ -34,6 +34,7 @@ For example, if you are using CUDA 12.6, you can install the GPU version of PyTo
 pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 ```
 
+and then install `VCVI_GPU` by:
 ```bash
 pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI_GPU
 ```
