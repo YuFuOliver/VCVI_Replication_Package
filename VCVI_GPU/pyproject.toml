@@ -18,16 +18,5 @@ dependencies = [
 ]
 
 [tool.setuptools]
-py-modules = [
-    "MFVI", 
-    "FCVI", 
-    "GVC_factor", 
-    "GVC_orthod", 
-    "KVC_GVC_orthod", 
-    "Blocked_factor", 
-    "GVC_orthod_withCM", 
-    "YJ", 
-    "logh_logitreg_autodiff_GPU", 
-    "logh_correlation_lasso_GPU", 
-    "KVC_utility"
-] 
+packages = ["VCVI_GPU"]
+package-dir = {"VCVI_GPU" = "."} 

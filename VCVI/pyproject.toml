@@ -18,18 +18,5 @@ dependencies = [
 ]
 
 [tool.setuptools]
-py-modules = [
-    "MFVI",
-    "FCVI", 
-    "GVC_factor",
-    "GVC_orthod",
-    "KVC_GVC_orthod",
-    "Blocked_factor",
-    "GVC_orthod_withCM",
-    "YJ",
-    "MFVI_anagrad",
-    "GVC_orthod_anagrad",
-    "KVC_utility",
-    "rep_kvc"
-]
-packages = ["spline", "SVUC"] 
+packages = ["VCVI", "VCVI.spline", "VCVI.SVUC"]
+package-dir = {"VCVI" = "."} 
