@@ -27,6 +27,12 @@ pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdi
 ```
 
 ### `VCVI_GPU`
+The GPU version of PyTorch cannot be installed automatically. Please install it manually by choosing your cuda version (check the cuda version via `nvidia-smi`) from: https://pytorch.org/get-started/locally/.
+
+For example, if you are using CUDA 12.6, you can install the GPU version of PyTorch by:
+```bash
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+```
 
 ```bash
 pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI_GPU
