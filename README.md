@@ -7,8 +7,6 @@ The `VCVI` package contains variational inference (VI) algorithms used in the pa
 The results in Sections 4.1 & 4.2 are trained on GPU (via Google Colab), and the results in Sections 4.3 & 4.4 are trained on CPU. To facilitate users who cannot access to a GPU from Google Colab, we provide instructions about how to replicate Sections 4.1 & 4.2 by a local CPU/GPU.
 
 ## Replication
-
-
 ### Install VCVI Package
 
 ```bash
@@ -24,7 +22,6 @@ pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdi
 ```
 
 > **Note:** GPU package allows flexible PyTorch versions for different CUDA setups. -->
-
 
 ## Usage
 The packages are highly user-friendly. However, the purpose of this readme is to introduce how to replicate the paper but not to explain how to use the packages.
@@ -42,10 +39,7 @@ mf = MFVI(optimizer='Adam', sampling=False,
 ELBO_mf = mf.train(num_iter=40000)
 ```
 
----
-
 ## Available Methods
-
 ### CPU Algorithms (`from VCVI import ...`)
 
 **Main Algorithms:**
@@ -86,10 +80,6 @@ ELBO_mf = mf.train(num_iter=40000)
 
 > **Note:** GPU algorithms do not include analytical gradient methods or SVUC/spline subpackages. Use explicit imports: `from VCVI_GPU import MFVI`
 
----
-
-
 ## Citation
-
 If you use this package in your research, please cite our paper:  
 > [Vector Copula Variational Inference and Dependent Block Posterior Approximations](https://arxiv.org/abs/2503.01072)
