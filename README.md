@@ -25,7 +25,6 @@ pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdi
 
 > **Note:** GPU package allows flexible PyTorch versions for different CUDA setups. -->
 
----
 
 ## Usage
 The packages are highly user-friendly. However, the purpose of this readme is to introduce how to replicate the paper but not to explain how to use the packages.
