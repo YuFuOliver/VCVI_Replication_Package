@@ -6,15 +6,6 @@ The `VCVI` package implements all VI algorithms from the paper based on **PyTorc
 - **CPU algorithms**: All algorithms available by default
 - **GPU algorithms**: Available via `VCVI.GPU` subpackage (requires CUDA)
 
-## Purpose
-
-The purposes of this repository are:
-1. To provide a unified Python package to replicate the results in the paper, such that the dependencies can be installed automatically
-2. To provide instructions on how to replicate the results in the paper
-
-> **More replication files will be available soon, which will use these packages.**
-> 
-> **This repository is under testing.**
 
 ---
 
