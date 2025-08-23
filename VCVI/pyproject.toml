@@ -15,7 +15,7 @@ dependencies = [
     "scikit-learn==1.4.2",
     "cmdstanpy>=1.2.4",
     "ipykernel",
-    "torch==2.4.0",
+    "torch==2.4.0"
 ]
 
 [tool.setuptools]
