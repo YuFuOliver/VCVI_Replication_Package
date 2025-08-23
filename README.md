@@ -1,15 +1,15 @@
 # VCVI Replication Package
 
-This repository contains Python packages to replicate the results in the paper **"Vector Copula Variational Inference and Dependent Block Posterior Approximations"** by Yu Fu, Michael Stanley Smith, and Anastasios Panagiotelis ([arxiv link](https://arxiv.org/abs/2503.01072)). The packages are developed and maintained by Yu Fu.
+This repository contains a Python package to replicate the results in the paper **"Vector Copula Variational Inference and Dependent Block Posterior Approximations"** by Yu Fu, Michael Stanley Smith, and Anastasios Panagiotelis ([arxiv link](https://arxiv.org/abs/2503.01072)). The package is developed and maintained by Yu Fu.
 
-There are two packages implementing VI algorithms based on **PyTorch**:
-- `VCVI`: All VI algorithms used in the paper, implemented on CPU
-- `VCVI_GPU`: Selected VI algorithms from VCVI, implemented on GPU
+The `VCVI` package implements all VI algorithms from the paper based on **PyTorch**, with both CPU and GPU support:
+- **CPU algorithms**: All algorithms available by default
+- **GPU algorithms**: Available via `VCVI.GPU` subpackage (requires CUDA)
 
 ## Purpose
 
 The purposes of this repository are:
-1. To provide two Python packages to replicate the results in the paper, such that the dependencies can be installed automatically
+1. To provide a unified Python package to replicate the results in the paper, such that the dependencies can be installed automatically
 2. To provide instructions on how to replicate the results in the paper
 
 > **More replication files will be available soon, which will use these packages.**
@@ -20,24 +20,22 @@ The purposes of this repository are:
 
 ## Installation
 
-### `VCVI`
+### Step 1: Install PyTorch (CPU)
+
+**Install PyTorch CPU version first:**
+```bash
+pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cpu
+```
+
+### Step 2: Install VCVI Package
 
 ```bash
 pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI
 ```
 
-### `VCVI_GPU`
-The GPU version of PyTorch cannot be installed automatically. Please install it manually by choosing your cuda version (check the cuda version via `nvidia-smi`) from: https://pytorch.org/get-started/locally/.
+### GPU Support
 
-For example, if you are using CUDA 12.6, you can install the GPU version of PyTorch by:
-```bash
-pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
-```
-
-and then install `VCVI_GPU` by:
-```bash
-pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI_GPU
-```
+GPU algorithms are available via `VCVI.GPU` but require manual PyTorch GPU setup. **GPU installation and usage will be handled separately by the package maintainer.**
 
 ---
 
@@ -61,7 +59,7 @@ ELBO_mf = mf.train(num_iter=40000)
 
 ## Available Methods
 
-### `VCVI` Package (CPU)
+### CPU Algorithms (`from VCVI import ...`)
 
 **Main Algorithms:**
 - [MFVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/MFVI.py): GMF (Gaussian Mean Field)
@@ -70,7 +68,7 @@ ELBO_mf = mf.train(num_iter=40000)
 - [Blocked_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/Blocked_factor.py): BLK & BLK-C (Section 4.1 & Section 4.2)
 - [GVC_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GVC_factor.py): A1 & A2 (Section 4.1 & Section 4.2)
 - [GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GVC_orthod.py): A3 & A4 (Section 4.1 & Section 4.2)
-- [GVC_orthod_anagrad](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GVC_orthod_anagrad.py): `GVC_orthod` with analytical gradients
+- [GVC_orthod_anagrad](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GVC_orthod_anagrad.py): GVC_orthod with analytical gradients
 - [GVC_orthod_withCM](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GVC_orthod_withCM.py): A5 & A6 (Section 4.1 & Section 4.2)
 - [KVC_GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/KVC_GVC_orthod.py): A7 (Online Appendix)
 
@@ -78,6 +76,7 @@ ELBO_mf = mf.train(num_iter=40000)
 - [Blocked_SVUC](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/SVUC/Blocked_SVUC.py): BLK-C (Section 4.3)
 - [GVC_factor_SVUC](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/SVUC/GVC_factor_SVUC.py): GVC-F20 (Section 4.3)
 - [GVC_orthod_SVUC](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/SVUC/GVC_orthod_SVUC.py): GVC-I (Section 4.3)
+- [KVC_SVUC](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/SVUC/KVC_SVUC.py): KVC-G (Section 4.3)
 
 
 **`spline` Subpackage:**
@@ -85,20 +84,20 @@ ELBO_mf = mf.train(num_iter=40000)
 - [GVC_factor_spline](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/spline/GVC_factor_spline.py): GVC-F5 & GVC-F20 (Section 4.4)
 - [KVC_spline](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/spline/KVC_spline.py): KVC-G (Section 4.4)
 
-### `VCVI_GPU` Package (GPU)
+### GPU Algorithms (`from VCVI.GPU import ...`)
 
-Contains GPU-optimized versions of selected algorithms from `VCVI`, plus additional GPU-specific log-posterior computations.
+**Available GPU-optimized algorithms:**
+- [MFVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/MFVI.py): GMF (Gaussian Mean Field)
+- [FCVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/FCVI.py): G-Fp & GC-Fp
+- [Blocked_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/Blocked_factor.py): BLK & BLK-C
+- [GVC_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/GVC_factor.py): A1 & A2
+- [GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/GVC_orthod.py): A3 & A4
+- [GVC_orthod_withCM](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/GVC_orthod_withCM.py): A5 & A6
+- [KVC_GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/KVC_GVC_orthod.py): A7
+- [LOGH_LOGITREG](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/logh_logitreg_autodiff_GPU.py): GPU-optimized logistic regression
+- [LOGH_CORRELATION](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/logh_correlation_lasso_GPU.py): GPU-optimized correlation model
 
-**Available Algorithms (same as described in `VCVI`, but on GPU):**
-- [MFVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/MFVI.py)
-- [FCVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/FCVI.py)
-- [Blocked_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/Blocked_factor.py)
-- [GVC_factor](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/GVC_factor.py)
-- [GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/GVC_orthod.py)
-- [GVC_orthod_withCM](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/GVC_orthod_withCM.py)
-- [KVC_GVC_orthod](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI_GPU/KVC_GVC_orthod.py)
-
-> **Note:** `VCVI_GPU` does not include analytical gradient methods (`MFVI_anagrad`, `GVC_orthod_anagrad`) or `SVUC`/`spline` subpackages as in `VCVI`.
+> **Note:** GPU algorithms do not include analytical gradient methods or SVUC/spline subpackages. Use explicit imports: `from VCVI.GPU import MFVI`
 
 ---
 
