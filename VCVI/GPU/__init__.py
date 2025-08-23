@@ -1,3 +1,6 @@
+# GPU implementations of VCVI algorithms
+# These require CUDA-compatible hardware and GPU PyTorch
+
 from .MFVI import MFVI
 from .FCVI import FCVI
 
