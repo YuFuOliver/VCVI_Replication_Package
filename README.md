@@ -4,28 +4,26 @@ This repository contains a Python package to replicate the results in the paper 
 
 The `VCVI` package contains variational inference (VI) algorithms used in the paper. `VCVI` is developed based on **PyTorch**.
 
-These VI algorithms are built on CPU by default. GPU training is additionally supported via `VCVI.GPU` subpackage to replicate the results in Sections 4.1 & 4.2 (requires CUDA).
-
----
+The results in Sections 4.1 & 4.2 are trained on GPU (via Google Colab), and the results in Sections 4.3 & 4.4 are trained on CPU. To facilitate users who cannot access to a GPU from Google Colab, we provide instructions about how to replicate Sections 4.1 & 4.2 by a local CPU/GPU.
 
 ## Replication
 
-### Step 1: Install PyTorch (CPU)
 
-**Install PyTorch CPU version first:**
-```bash
-pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cpu
-```
-
-### Step 2: Install VCVI Package
+### Install VCVI Package
 
 ```bash
 pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI
 ```
 
-### GPU Support
+<!-- ### GPU Support
 
-GPU algorithms are available via `VCVI.GPU` but require manual PyTorch GPU setup. **GPU installation and usage will be handled separately by the package maintainer.**
+GPU algorithms are available as a separate package `VCVI_GPU`. Install separately:
+
+```bash
+pip install git+https://github.com/YuFuOliver/VCVI_Replication_Package.git#subdirectory=VCVI/GPU
+```
+
+> **Note:** GPU package allows flexible PyTorch versions for different CUDA setups. -->
 
 ---
 
@@ -74,7 +72,7 @@ ELBO_mf = mf.train(num_iter=40000)
 - [GVC_factor_spline](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/spline/GVC_factor_spline.py): GVC-F5 & GVC-F20 (Section 4.4)
 - [KVC_spline](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/spline/KVC_spline.py): KVC-G (Section 4.4)
 
-### GPU Algorithms (`from VCVI.GPU import ...`)
+### GPU Algorithms (`from VCVI_GPU import ...`)
 
 **Available GPU-optimized algorithms:**
 - [MFVI](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/MFVI.py): GMF (Gaussian Mean Field)
@@ -87,7 +85,7 @@ ELBO_mf = mf.train(num_iter=40000)
 - [LOGH_LOGITREG](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/logh_logitreg_autodiff_GPU.py): GPU-optimized logistic regression
 - [LOGH_CORRELATION](https://github.com/YuFuOliver/VCVI_Replication_Package/blob/main/VCVI/GPU/logh_correlation_lasso_GPU.py): GPU-optimized correlation model
 
-> **Note:** GPU algorithms do not include analytical gradient methods or SVUC/spline subpackages. Use explicit imports: `from VCVI.GPU import MFVI`
+> **Note:** GPU algorithms do not include analytical gradient methods or SVUC/spline subpackages. Use explicit imports: `from VCVI_GPU import MFVI`
 
 ---
 

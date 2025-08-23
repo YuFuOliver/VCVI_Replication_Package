@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "VCVI"
+name = "VCVI_GPU"
 version = "0.1.0"
 dependencies = [
     "numpy==1.26.4",
@@ -15,9 +15,8 @@ dependencies = [
     "scikit-learn==1.4.2",
     "cmdstanpy>=1.2.4",
     "ipykernel",
-    "torch==2.4.0",
 ]
 
 [tool.setuptools]
-packages = ["VCVI", "VCVI.spline", "VCVI.SVUC"]
-package-dir = {"VCVI" = "."} 
+packages = ["VCVI_GPU"]
+package-dir = {"VCVI_GPU" = "."}
