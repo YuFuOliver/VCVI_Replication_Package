@@ -227,7 +227,7 @@ class Blocked_factor:
             with torch.no_grad():
                 ELBO_store[iter] = ELBO
 
-            if iter % 100 == 0:
+            if iter % 1000 == 0:
                 print(f"Iteration {iter}: ELBO = {ELBO.item()}")
 
         with torch.no_grad():

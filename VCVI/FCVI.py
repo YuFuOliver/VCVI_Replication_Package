@@ -193,8 +193,8 @@ class FCVI:
             with torch.no_grad():
                 ELBO_store[iter] = ELBO
 
-            # if iter % 100 == 0:
-            #     print(f"Iteration {iter}: ELBO = {ELBO.item()}")
+            if iter % 1000 == 0:
+                print(f"Iteration {iter}: ELBO = {ELBO.item()}")
 
         with torch.no_grad():
             avg_mu, _ = torch.median(mu_store, dim=0)
