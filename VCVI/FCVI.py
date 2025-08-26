@@ -129,8 +129,10 @@ class FCVI:
         D2invC = torch.unsqueeze(1/d_**2,1) * C_
         inv_kernal = torch.eye(p) + C_.T @ D2invC
 
-        Sigma_inv = ( torch.diag(1/d_**2) 
-                    - D2invC @ torch.inverse( inv_kernal ) @ D2invC.T )
+        # Sigma_inv = ( torch.diag(1/d_**2) 
+        #             - D2invC @ torch.inverse( inv_kernal ) @ D2invC.T )
+
+        Sigma_inv = torch.diag(1/d_**2) - D2invC @ torch.linalg.solve(inv_kernal, D2invC.T)
 
         # compute logq
         log_Sigma_deter = torch.sum(torch.log(d_**2)) + torch.logdet(inv_kernal)
