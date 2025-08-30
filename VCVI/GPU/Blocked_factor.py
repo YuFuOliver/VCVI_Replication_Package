@@ -136,8 +136,10 @@ class Blocked_factor:
             D2invC = torch.unsqueeze(1/d_**2,1) * C_
             inv_kernal = torch.eye(self.p).to('cuda') + C_.T @ D2invC
 
-            Finv = ( torch.diag(1/d_**2) 
-                        - D2invC @ torch.inverse( inv_kernal ) @ D2invC.T )
+            # Finv = ( torch.diag(1/d_**2) 
+            #             - D2invC @ torch.inverse( inv_kernal ) @ D2invC.T )
+
+            Finv = torch.diag(1/d_**2) - D2invC @ torch.linalg.solve(inv_kernal, D2invC.T)
 
             log_F_deter = torch.sum(torch.log(d_**2)) + torch.logdet(inv_kernal)
             log_Finv_deter = - log_F_deter
