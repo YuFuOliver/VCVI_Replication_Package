@@ -89,13 +89,13 @@ class Blocked_spline:
         # deal with the variational parameters
 
         L1_inv = torch.diag(torch.ones(self.d[0])) + torch.diag(self.l12, -1) + torch.diag(self.l13, -2)
-        L1 = torch.linalg.solve_triangular(L1_inv, self.I1 , upper = False)
+        L1 = torch.linalg.solve_triangular(L1_inv, self.I1 , upper = False, unitriangular = True)
 
         L2_inv = torch.diag(torch.ones(self.d[1])) + torch.diag(self.l22, -1) + torch.diag(self.l23, -2)
-        L2 = torch.linalg.solve_triangular(L2_inv, self.I2 , upper = False)
+        L2 = torch.linalg.solve_triangular(L2_inv, self.I2 , upper = False, unitriangular = True)
 
         L3_inv = torch.diag(torch.ones(self.d[2])) + torch.diag(self.l32, -1) + torch.diag(self.l33, -2)
-        L3 = torch.linalg.solve_triangular(L3_inv, self.I3 , upper = False)
+        L3 = torch.linalg.solve_triangular(L3_inv, self.I3 , upper = False, unitriangular = True)
 
         L4 = torch.diag( torch.ones(self.dim2) )
         L = torch.block_diag(L1, L2, L3, L4)
@@ -244,13 +244,13 @@ class Blocked_spline:
             avg_etat,_ = torch.median(etat_record, dim=0)
 
             L1_inv = torch.diag(torch.ones(self.d[0])) + torch.diag(avg_l12, -1) + torch.diag(avg_l13, -2)
-            L1 = torch.linalg.solve_triangular(L1_inv, self.I1 , upper = False)
+            L1 = torch.linalg.solve_triangular(L1_inv, self.I1 , upper = False, unitriangular = True)
             
             L2_inv = torch.diag(torch.ones(self.d[1])) + torch.diag(avg_l22, -1) + torch.diag(avg_l23, -2)
-            L2 = torch.linalg.solve_triangular(L2_inv, self.I2 , upper = False)
+            L2 = torch.linalg.solve_triangular(L2_inv, self.I2 , upper = False, unitriangular = True)
 
             L3_inv = torch.diag(torch.ones(self.d[2])) + torch.diag(avg_l32, -1) + torch.diag(avg_l33, -2)
-            L3 = torch.linalg.solve_triangular(L3_inv, self.I3 , upper = False)
+            L3 = torch.linalg.solve_triangular(L3_inv, self.I3 , upper = False, unitriangular = True)
 
             L4 = torch.diag( torch.ones(self.dim2) )
             L = torch.block_diag(L1, L2, L3, L4)

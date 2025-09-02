@@ -120,10 +120,10 @@ class GVC_factor_SVUC:
     def sample(self) -> Tuple[TensorWithGrad, torch.Tensor]:
         
         L1_inv = torch.diag(torch.ones(self.k[0])) + torch.diag(self.l12, -1)
-        L1 = torch.linalg.solve_triangular(L1_inv, self.identities[0] , upper = False)
+        L1 = torch.linalg.solve_triangular(L1_inv, self.identities[0] , upper = False, unitriangular = True)
 
         L2_inv = torch.diag(torch.ones(self.k[1])) + torch.diag(self.l22, -1)
-        L2 = torch.linalg.solve_triangular(L2_inv, self.identities[1] , upper = False)
+        L2 = torch.linalg.solve_triangular(L2_inv, self.identities[1] , upper = False, unitriangular = True)
 
         L3 = torch.eye(self.dim - self.k[0] - self.k[1]) + torch.tril(self.L3, -1)
         L = torch.block_diag(L1, L2, L3)
@@ -161,7 +161,8 @@ class GVC_factor_SVUC:
             L1_inv = torch.diag(torch.ones(self.k[0])) + torch.diag(self.l12, -1)
             L2_inv = torch.diag(torch.ones(self.k[1])) + torch.diag(self.l22, -1)
             L3 = torch.eye(dim - self.k[0] - self.k[1]) + torch.tril(self.L3, -1)
-            L3_inv = torch.inverse(L3)
+            # L3_inv = torch.inverse(L3)
+            L3_inv = torch.linalg.solve_triangular(L3, self.identities[2], upper = False, unitriangular = True)
             L_inv = torch.block_diag(L1_inv, L2_inv, L3_inv) # Note that |L_inv| = 1 = |L|
             L_inv_ = L_inv.detach()
 
@@ -184,8 +185,10 @@ class GVC_factor_SVUC:
         D2invC = torch.unsqueeze(1/zeta_vec,1) * C_
         inv_kernal = torch.eye(p) + C_.T @ D2invC
 
-        Omegat_inv = ( torch.diag(1/zeta_vec) 
-                    - D2invC @ torch.inverse( inv_kernal ) @ D2invC.T )
+        # Omegat_inv = ( torch.diag(1/zeta_vec) 
+        #             - D2invC @ torch.inverse( inv_kernal ) @ D2invC.T )
+
+        Omegat_inv = torch.diag(1/zeta_vec) - D2invC @ torch.linalg.solve(inv_kernal, D2invC.T)
 
         log_Omegat_deter = torch.sum(torch.log(zeta_vec)) + torch.logdet(inv_kernal)
         
@@ -277,10 +280,10 @@ class GVC_factor_SVUC:
             avg_etat, _ = torch.median(etat_store, dim=0)
 
             L1_inv = torch.diag(torch.ones(self.k[0])) + torch.diag(avg_l12, -1)
-            L1 = torch.linalg.solve_triangular(L1_inv, self.identities[0] , upper = False)
+            L1 = torch.linalg.solve_triangular(L1_inv, self.identities[0] , upper = False, unitriangular = True)
 
             L2_inv = torch.diag(torch.ones(self.k[1])) + torch.diag(avg_l22, -1)
-            L2 = torch.linalg.solve_triangular(L2_inv, self.identities[1] , upper = False)
+            L2 = torch.linalg.solve_triangular(L2_inv, self.identities[1] , upper = False, unitriangular = True)
             
             L = torch.block_diag(L1, L2, avg_L3)
 

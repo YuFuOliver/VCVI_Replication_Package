@@ -46,6 +46,7 @@ class Blocked_SVUC:
         self.sampling = sampling
         self.I1 = torch.eye(d[0]) # identity matrix with block1
         self.I2 = torch.eye(d[1]) # identity matrix with block2
+        self.I3 = torch.eye(d[2]) # identity matrix with block3
         self.isYJ = isYJ
 
         if self.log_post is not None:
@@ -85,10 +86,10 @@ class Blocked_SVUC:
         dim = self.dim
 
         L1_inv = torch.diag(torch.ones(self.d[0])) + torch.diag(self.l12, -1)
-        L1 = torch.linalg.solve_triangular(L1_inv, self.I1 , upper = False)
+        L1 = torch.linalg.solve_triangular(L1_inv, self.I1 , upper = False, unitriangular = True)
 
         L2_inv = torch.diag(torch.ones(self.d[1])) + torch.diag(self.l22, -1)
-        L2 = torch.linalg.solve_triangular(L2_inv, self.I2 , upper = False)
+        L2 = torch.linalg.solve_triangular(L2_inv, self.I2 , upper = False, unitriangular = True)
 
         L3 = torch.eye(dim - self.d[0] - self.d[1]) + torch.tril(self.L3, -1)
         L = torch.block_diag(L1, L2, L3)
@@ -126,7 +127,8 @@ class Blocked_SVUC:
             L1_inv = torch.diag(torch.ones(self.d[0])) + torch.diag(self.l12, -1)
             L2_inv = torch.diag(torch.ones(self.d[1])) + torch.diag(self.l22, -1)
             L3 = torch.eye(dim - self.d[0] - self.d[1]) + torch.tril(self.L3, -1)
-            L3_inv = torch.inverse(L3)
+            # L3_inv = torch.inverse(L3)
+            L3_inv = torch.linalg.solve_triangular(L3, self.I3, upper = False, unitriangular = True)
             L_inv = torch.block_diag(L1_inv, L2_inv, L3_inv) # Note that |L_inv| = 1 = |L|
 
             b_ = self.b.detach()
@@ -224,10 +226,10 @@ class Blocked_SVUC:
             avg_etat,_ = torch.median(etat_record, dim=0)
 
             L1_inv = torch.diag(torch.ones(self.d[0])) + torch.diag(avg_l12, -1)
-            L1 = torch.linalg.solve_triangular(L1_inv, self.I1 , upper = False)
+            L1 = torch.linalg.solve_triangular(L1_inv, self.I1 , upper = False, unitriangular = True)
 
             L2_inv = torch.diag(torch.ones(self.d[1])) + torch.diag(avg_l22, -1)
-            L2 = torch.linalg.solve_triangular(L2_inv, self.I2 , upper = False)
+            L2 = torch.linalg.solve_triangular(L2_inv, self.I2 , upper = False, unitriangular = True)
             
             L = torch.block_diag(L1, L2, avg_L3)
 

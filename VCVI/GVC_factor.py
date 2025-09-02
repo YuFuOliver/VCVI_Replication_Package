@@ -159,8 +159,10 @@ class GVC_factor:
         D2invC = torch.unsqueeze(1/zeta_vec,1) * C_
         inv_kernal = torch.eye(p) + C_.T @ D2invC
 
-        Omegat_inv = ( torch.diag(1/zeta_vec) 
-                    - D2invC @ torch.inverse( inv_kernal ) @ D2invC.T )
+        # Omegat_inv = ( torch.diag(1/zeta_vec) 
+        #             - D2invC @ torch.inverse( inv_kernal ) @ D2invC.T )
+
+        Omegat_inv = torch.diag(1/zeta_vec) - D2invC @ torch.linalg.solve(inv_kernal, D2invC.T)
 
         log_Omegat_deter = torch.sum(torch.log(zeta_vec)) + torch.logdet(inv_kernal)
         
