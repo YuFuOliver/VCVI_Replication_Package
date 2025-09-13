@@ -96,7 +96,7 @@ class GVC_orthod_withCM:
         
         # Define the optimizer
         if optimizer == 'Adam':
-            self.optimizer = optim.AdamW(vari_para, lr=0.001, maximize=True)
+            self.optimizer = optim.Adam(vari_para, lr=0.001, maximize=True)
         else:
             self.optimizer = optim.Adadelta(vari_para, rho=0.95, maximize=True)
                                             
